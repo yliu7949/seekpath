@@ -245,10 +245,11 @@ classdef PathCreationTest < matlab.unittest.TestCase
             
             if testCase.verbose_tests
                 fprintf('*** %s (inv=%d)\n', extBravais, withInv);
-                for i = 1:numel(result.path)
-                    path = result.path{i};
-                    p1 = path(1); p2 = path(2);
-                    fprintf('   %s -- %s: %s -- %s\n', p1, p2, mat2str(result.point_coords{p1}), mat2str(result.point_coords{p2}));
+                for i = 1:size(result.path, 1)
+                    p1 = result.path{i, 1};
+                    p2 = result.path{i, 2};
+                    fprintf('   %s -- %s: %s -- %s\n', p1, p2, ...
+                        mat2str(result.point_coords.(p1), 3), mat2str(result.point_coords.(p2), 3));
                 end
             end
         end

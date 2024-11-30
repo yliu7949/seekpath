@@ -30,5 +30,34 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
             b3 = [0.2, 0.2, 1];
             brillouinzone.plotBrillouinZone(b1, b2, b3);
         end
+
+        function Si8PlotWithPathTest(~)
+            cell = [
+                5.4437023729394527    0.0000000000000000    0.0000000000000003
+                0.0000000000000009    5.4437023729394527    0.0000000000000003
+                0.0000000000000000    0.0000000000000000    5.4437023729394527
+                ];
+            positions = [
+                0.7500000000000000    0.7500000000000000    0.2500000000000000
+                0.0000000000000000    0.5000000000000000    0.5000000000000000
+                0.7500000000000000    0.2500000000000000    0.7500000000000000
+                0.0000000000000000    0.0000000000000000    0.0000000000000000
+                0.2500000000000000    0.7500000000000000    0.7500000000000000
+                0.5000000000000000    0.5000000000000000    0.0000000000000000
+                0.2500000000000000    0.2500000000000000    0.2500000000000000
+                0.5000000000000000    0.0000000000000000    0.5000000000000000
+                ];
+            numbers = 14 * ones(1, 8);
+            structure = {cell, positions, numbers};
+
+            result = hpkot.getPath(structure, false);
+            reciprocalLattice = utils.getReciprocalCellRows(result.primitive_lattice);
+            b1 = reciprocalLattice(:, 1);
+            b2 = reciprocalLattice(:, 2);
+            b3 = reciprocalLattice(:, 3);
+
+            % Call the function to plot
+            brillouinzone.plotBrillouinZoneWithPath(b1, b2, b3, result);
+        end
     end
 end
