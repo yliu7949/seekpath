@@ -1,5 +1,5 @@
 function [kpointParameterDefinitions, kpointDefinitions, kpointPath] = getPathData(extendedBravais)
-% GETPATHDATA Retrieve k-point parameters, points, and paths for an extended Bravais lattice.
+%GETPATHDATA Retrieve k-point parameters, points, and paths for an extended Bravais lattice.
 %
 % This function retrieves data for the specified extended Bravais lattice symbol from
 % the `BandPathData.mat` file. If the file does not exist, it triggers the generation

@@ -1,14 +1,21 @@
 function [PMatrix, inversePMatrix] = getPMatrix(bravaisLatticeType)
 %GETPMATRIX Returns the P matrix and its inverse for a given Bravais lattice.
 %
-%   [PMatrix, inversePMatrix] = getPMatrix(bravaisLatticeType)
+% This function computes the matrix that converts conventional lattice vectors
+% to primitive lattice vectors based on the provided Bravais lattice type.
+% Additionally, it returns the inverse of the matrix, which can be used for 
+% coordinate transformation between the conventional and primitive lattice systems.
 %
-% Parameters:
-%   bravaisLatticeType: A string representing the Bravais lattice type (e.g., 'cP', 'tP', etc.).
+% Input:
+%   bravaisLatticeType - A string representing the Bravais lattice type 
+%                        (e.g., 'cP', 'tP', 'oP', etc.), which determines 
+%                        the structure of the lattice and the conversion matrix.
 %
-% Returns:
-%   PMatrix: The 3x3 matrix that converts conventional lattice vectors to primitive lattice vectors.
-%   inversePMatrix: The inverse of PMatrix, used for coordinate transformation.
+% Output:
+%   PMatrix           - A 3x3 matrix that converts conventional lattice vectors 
+%                        to primitive lattice vectors.
+%   inversePMatrix    - The inverse of `PMatrix`, used to convert from primitive 
+%                        lattice coordinates back to conventional lattice coordinates.
 
     if any(strcmp(bravaisLatticeType, {'cP', 'tP', 'hP', 'oP', 'mP'}))
         PMatrix = [1, 0, 0; 0, 1, 0; 0, 0, 1];

@@ -1,24 +1,28 @@
 function result = getPath(structure, with_time_reversal, threshold, symprec, angle_tolerance)
 %GETPATH Return the k-point path information for band structures given a crystal structure.
 %
+% This function computes the k-point path for the band structure calculation
+% based on the provided crystal structure, and optionally includes time-reversal 
+% symmetry, lattice parameter thresholds, and symmetry precision.
+%
 % Usage:
 %   result = hpkot.getPath(structure)
 %   result = hpkot.getPath(structure, with_time_reversal, threshold, symprec, angle_tolerance)
 %
-% Parameters:
-%   structure: A cell array {cell, positions, numbers}, where:
-%       - cell: 3x3 matrix representing lattice vectors (each row is a vector)
-%       - positions: Nx3 matrix of atomic positions in fractional coordinates
-%       - numbers: Nx1 vector of atomic numbers
+% Input:
+%   structure           - A cell array {cell, positions, numbers}, where:
+%     - cell            - A 3x3 matrix representing lattice vectors (each row is a vector).
+%     - positions       - An Nx3 matrix of atomic positions in fractional coordinates.
+%     - numbers         - An Nx1 vector of atomic numbers.
 %
-% Optional Parameters:
-%   with_time_reversal: (default true) whether to consider time-reversal symmetry
-%   threshold: (default 1e-7) threshold for edge cases in lattice parameters
-%   symprec: (default 1e-5) symmetry precision for spglib
-%   angle_tolerance: (default -1.0) angle tolerance for spglib
+% Optional Input:
+%   with_time_reversal  - (default true) Whether to include time-reversal symmetry in the path calculation.
+%   threshold           - (default 1e-7) Threshold for numerical precision in lattice parameter comparisons.
+%   symprec             - (default 1e-5) Symmetry precision for spglib.
+%   angle_tolerance     - (default -1.0) Angle tolerance for spglib (typically unused if set to -1).
 %
-% Returns:
-%   result: A struct containing k-point path information and symmetry data.
+% Output:
+%   result              - A struct containing k-point path information and symmetry data.
 
 arguments
     structure (1, 3) cell {mustBeNonempty}

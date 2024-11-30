@@ -12,7 +12,6 @@ function [POSCAR_inversion, POSCAR_noinversion] = getStructureData(extendedBrava
 %   POSCAR_inversion    - A cell array containing the POSCAR data with inversion symmetry.
 %   POSCAR_noinversion  - A cell array containing the POSCAR data without inversion symmetry.
 
-
 % Define the path to the BandPathData.mat file
 bandPathDataFilePath = fullfile('+data', 'BandPathData.mat');
 

@@ -3,23 +3,24 @@ function [extendedBravais, conventionalLattice, conventionalPositions] = getExte
     ~, cosineBeta, ~, comparisonThreshold, conventionalLattice, conventionalPositions)
 %GETEXTENDEDBRAVAISLATTICE Determine the extended Bravais lattice type.
 %
-%   [extendedBravais, conventionalLattice, conventionalPositions] = getExtendedBravaisLattice( ...
-%       bravaisLatticeType, spaceGroupNumber, a, b, c, ...
-%       cosineAlpha, cosineBeta, cosineGamma, comparisonThreshold, conventionalLattice, conventionalPositions)
+% This function determines the extended Bravais lattice type based on the
+% input Bravais lattice type, space group number, lattice parameters, 
+% and atomic positions. It updates the conventional lattice and atomic 
+% positions if the Bravais lattice is 'aP'.
 %
-% Parameters:
-%   bravaisLatticeType: String representing the Bravais lattice type (e.g., 'cP', 'tI', etc.).
-%   spaceGroupNumber: Space group number.
-%   a, b, c: Lattice parameters (lengths of lattice vectors).
-%   cosineAlpha, cosineBeta, cosineGamma: Cosines of the lattice angles.
-%   comparisonThreshold: Threshold value for numerical comparisons.
-%   conventionalLattice: Conventional lattice vectors (3x3 matrix).
-%   conventionalPositions: Atomic positions in fractional coordinates (Nx3 matrix).
+% Input:
+%   bravaisLatticeType     - A string representing the Bravais lattice type (e.g., 'cP', 'tI', etc.).
+%   spaceGroupNumber       - Space group number associated with the lattice.
+%   a, b, c                - Lattice parameters (lengths of the lattice vectors).
+%   cosineAlpha, cosineBeta, cosineGamma - Cosines of the lattice angles.
+%   comparisonThreshold    - Threshold value for numerical comparisons in lattice type determination.
+%   conventionalLattice     - A 3x3 matrix representing the conventional lattice vectors.
+%   conventionalPositions  - An Nx3 matrix of atomic positions in fractional coordinates.
 %
-% Returns:
-%   extendedBravais: Extended Bravais lattice type.
-%   conventionalLattice: Updated conventional lattice vectors (for 'aP' lattice).
-%   conventionalPositions: Updated atomic positions (for 'aP' lattice).
+% Output:
+%   extendedBravais        - A string representing the extended Bravais lattice type (e.g., 'cP', 'tI', etc.).
+%   conventionalLattice     - The updated conventional lattice vectors (for 'aP' lattice, if applicable).
+%   conventionalPositions  - The updated atomic positions (for 'aP' lattice, if applicable).
 
 if strcmp(bravaisLatticeType, 'cP')
     if spaceGroupNumber >= 195 && spaceGroupNumber <= 206

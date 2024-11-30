@@ -1,5 +1,5 @@
 function extendedParameters = extendParameters(parameters)
-% EXTENDPARAMETERS Extends a dictionary of parameters with simple expressions.
+%EXTENDPARAMETERS Extends a dictionary of parameters with simple expressions.
 %
 % Input:
 %   parameters - A struct where field names are parameter names

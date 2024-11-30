@@ -1,5 +1,5 @@
 function result = evaluateExpressionSimple(expression, parameters)
-% EVALUATEEXPRESSIONSIMPLE Evaluates expressions that only require parameters.
+%EVALUATEEXPRESSIONSIMPLE Evaluates expressions that only require parameters.
 %
 % Input:
 %   expression - A string representing the mathematical expression to evaluate.
