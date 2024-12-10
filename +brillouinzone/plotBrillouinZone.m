@@ -51,7 +51,7 @@ end
 scatter3(0, 0, 0, 100, 'g', 'filled');
 
 % Draw coordinate axes arrows
-axesLength = 2;
+axesLength = max(sqrt(sum(vertices.^2, 2))) * 1.5;
 quiver3(0, 0, 0, axesLength, 0, 0, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
 quiver3(0, 0, 0, 0, axesLength, 0, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
 quiver3(0, 0, 0, 0, 0, axesLength, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
