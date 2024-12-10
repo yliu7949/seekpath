@@ -24,6 +24,15 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
             brillouinzone.plotBrillouinZone(b1, b2, b3);
         end
 
+        function HexagonalLatticeTest(~)
+            % For Hexagonal lattice.
+            b1 = [1/2, -sqrt(3)/2, 0];
+            b2 = [1/2, sqrt(3)/2, 0];
+            b3 = [0, 0, 1];
+
+            brillouinzone.plotBrillouinZone(b1, b2, b3);
+        end
+
         function CustomLatticeTest(~)
             b1 = [1, 0, 0];
             b2 = [0, 1, 0];

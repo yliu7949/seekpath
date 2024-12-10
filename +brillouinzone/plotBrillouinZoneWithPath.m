@@ -104,7 +104,17 @@ for i = 1:size(result.path, 1)
     end
 end
 
-% Set the view angle
-view(60, 0);
 hold off;
+
+% Set the view angle
+direction = b1 + b2 + b3; 
+if norm(direction) < 1e-10
+    direction = [1, 1, 1];
+end
+direction = direction / norm(direction);
+
+R = angle2dcm(deg2rad(25), deg2rad(35), 0, 'ZXY');
+direction = (R * direction(:))';
+campos(direction * axesLength);
+rotate3d(gcf, 'on');
 end
