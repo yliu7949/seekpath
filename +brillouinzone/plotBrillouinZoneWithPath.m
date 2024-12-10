@@ -48,8 +48,8 @@ for i = 1:length(faces)
     faceIndices = faces{i}; % Indices of face vertices in the global vertices list
     % Use the global vertices list to draw the face
     patch('Faces', faceIndices, 'Vertices', vertices, ...
-        'FaceColor', 'none', 'EdgeColor', 'k', ...
-        'FaceAlpha', 1.0, 'LineWidth', 1);
+        'FaceColor', '#A1BEFF', 'EdgeColor', 'k', ...
+        'FaceAlpha', 0.4, 'LineWidth', 1);
 end
 
 % Plot the origin with larger size and more noticeable

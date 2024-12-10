@@ -43,8 +43,8 @@ for i = 1:length(faces)
     faceIndices = faces{i};  % Indices of face vertices in the global vertices list
     % Use the global vertices list to draw the face
     patch('Faces', faceIndices, 'Vertices', vertices, ...
-        'FaceColor', [0.8, 0.8, 1], 'EdgeColor', 'k', ...
-        'FaceAlpha', 0.9, 'LineWidth', 1);
+        'FaceColor', '#A1BEFF', 'EdgeColor', 'k', ...
+        'FaceAlpha', 0.8, 'LineWidth', 1);
 end
 
 % Plot the origin
@@ -55,6 +55,11 @@ axesLength = 2;
 quiver3(0, 0, 0, axesLength, 0, 0, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
 quiver3(0, 0, 0, 0, axesLength, 0, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
 quiver3(0, 0, 0, 0, 0, axesLength, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
+
+% Add labels to axes b1, b2, b3
+text(axesLength, 0, 0, 'b_1', 'FontSize', 12, 'FontWeight', 'bold');
+text(0, axesLength, 0, 'b_2', 'FontSize', 12, 'FontWeight', 'bold');
+text(0, 0, axesLength, 'b_3', 'FontSize', 12, 'FontWeight', 'bold');
 
 % Set the view angle
 view(60, 0);
