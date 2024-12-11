@@ -44,12 +44,12 @@ kpointPath = latticeData.path;                       % List of paths connecting 
 for i = 1:size(kpointPath, 1)  % Iterate over rows of kpointPath
     point1 = kpointPath{i, 1};
     point2 = kpointPath{i, 2};
-    
+
     % Check if point1 is defined in kpointDefinitions
     if ~isfield(kpointDefinitions, point1)
         error('Point "%s" found in path but not defined in kpointDefinitions for "%s".', point1, extendedBravais);
     end
-    
+
     % Check if point2 is defined in kpointDefinitions
     if ~isfield(kpointDefinitions, point2)
         error('Point "%s" found in path but not defined in kpointDefinitions for "%s".', point2, extendedBravais);

@@ -13,7 +13,7 @@ function realSpaceCell = getRealCellFromReciprocalRows(reciprocalSpaceRows)
 % Output:
 %   realSpaceCell - A 3x3 matrix with real-space lattice vectors as rows.
 
-    % Compute the real-space cell
-    realSpaceColumns = reciprocalSpaceRows \ (2 * pi * eye(3));
-    realSpaceCell = realSpaceColumns';
+% Compute the real-space cell
+realSpaceColumns = reciprocalSpaceRows \ (2 * pi * eye(3));
+realSpaceCell = realSpaceColumns';
 end

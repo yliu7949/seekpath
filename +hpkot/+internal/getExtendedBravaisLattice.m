@@ -4,8 +4,8 @@ function [extendedBravais, conventionalLattice, conventionalPositions] = getExte
 %GETEXTENDEDBRAVAISLATTICE Determine the extended Bravais lattice type.
 %
 % This function determines the extended Bravais lattice type based on the
-% input Bravais lattice type, space group number, lattice parameters, 
-% and atomic positions. It updates the conventional lattice and atomic 
+% input Bravais lattice type, space group number, lattice parameters,
+% and atomic positions. It updates the conventional lattice and atomic
 % positions if the Bravais lattice is 'aP'.
 %
 % Input:

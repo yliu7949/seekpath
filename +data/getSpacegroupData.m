@@ -243,7 +243,7 @@ values = {
     {'c', 'F', true}, ... % 228
     {'c', 'I', true}, ... % 229
     {'c', 'I', true} ... % 230
-};
+    };
 
 % Now create the containers.Map object
 spacegroupDataMap = containers.Map(keys, values);

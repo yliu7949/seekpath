@@ -55,16 +55,25 @@ end
 % Plot the origin with larger size and more noticeable
 scatter3(0, 0, 0, 100, 'g', 'filled');
 
-% Draw coordinate axes arrows and label them
+% Determine suitable axes length
 axesLength = max(sqrt(sum(vertices.^2, 2))) * 1.5;
-quiver3(0, 0, 0, axesLength, 0, 0, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
-quiver3(0, 0, 0, 0, axesLength, 0, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
-quiver3(0, 0, 0, 0, 0, axesLength, 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
 
-% Add labels to axes b1, b2, b3
-text(axesLength, 0, 0, 'b_1', 'FontSize', 12, 'FontWeight', 'bold');
-text(0, axesLength, 0, 'b_2', 'FontSize', 12, 'FontWeight', 'bold');
-text(0, 0, axesLength, 'b_3', 'FontSize', 12, 'FontWeight', 'bold');
+% Draw coordinate axes
+maxLength = max([norm(b1), norm(b2), norm(b3)]);
+scaleFactor = axesLength / maxLength;
+
+b1Scaled = b1 * scaleFactor;
+b2Scaled = b2 * scaleFactor;
+b3Scaled = b3 * scaleFactor;
+
+quiver3(0, 0, 0, b1Scaled(1), b1Scaled(2), b1Scaled(3), 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
+quiver3(0, 0, 0, b2Scaled(1), b2Scaled(2), b2Scaled(3), 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
+quiver3(0, 0, 0, b3Scaled(1), b3Scaled(2), b3Scaled(3), 'k', 'LineWidth', 2, 'MaxHeadSize', 0.2);
+
+% Label axes
+text(b1Scaled(1), b1Scaled(2), b1Scaled(3), 'b_1', 'FontSize', 12, 'FontWeight', 'bold');
+text(b2Scaled(1), b2Scaled(2), b2Scaled(3), 'b_2', 'FontSize', 12, 'FontWeight', 'bold');
+text(b3Scaled(1), b3Scaled(2), b3Scaled(3), 'b_3', 'FontSize', 12, 'FontWeight', 'bold');
 
 % Plot the path line segments between points using red color
 % Also plot the points themselves with larger size and label them
@@ -107,14 +116,6 @@ end
 hold off;
 
 % Set the view angle
-direction = b1 + b2 + b3; 
-if norm(direction) < 1e-10
-    direction = [1, 1, 1];
-end
-direction = direction / norm(direction);
-
-R = angle2dcm(deg2rad(25), deg2rad(35), 0, 'ZXY');
-direction = (R * direction(:))';
-campos(direction * axesLength);
+view(115, 10);
 rotate3d(gcf, 'on');
 end

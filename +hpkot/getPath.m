@@ -2,7 +2,7 @@ function result = getPath(structure, with_time_reversal, threshold, symprec, ang
 %GETPATH Return the k-point path information for band structures given a crystal structure.
 %
 % This function computes the k-point path for the band structure calculation
-% based on the provided crystal structure, and optionally includes time-reversal 
+% based on the provided crystal structure, and optionally includes time-reversal
 % symmetry, lattice parameter thresholds, and symmetry precision.
 %
 % Usage:
@@ -99,14 +99,14 @@ end
 augmented_path = false;
 if ~has_inv && ~with_time_reversal
     augmented_path = true;
-    
+
     % Convert 'points' to a containers.Map if it isn't one already
     if ~isa(points, 'containers.Map')
         point_names = fieldnames(points);
         point_coords = struct2cell(points);
         points = containers.Map(point_names, point_coords);
     end
-    
+
     % Get the keys (point names) from the 'points' map
     point_names = keys(points);
     for i = 1:length(point_names)
@@ -118,7 +118,7 @@ if ~has_inv && ~with_time_reversal
         new_pointname = [pointname, ''''];
         points(new_pointname) = -coords;
     end
-    
+
     % Deep copy the old path to avoid modifying it while iterating
     old_path = path;
     for i = 1:size(old_path, 1)

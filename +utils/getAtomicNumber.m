@@ -1,7 +1,7 @@
 function atomicNumber = getAtomicNumber(elementSymbol)
 % GETATOMICNUMBER Maps a chemical element symbol to its atomic number.
-% 
-% This function provides a mapping from the chemical element symbol (e.g., 'H' for Hydrogen, 'O' for Oxygen) 
+%
+% This function provides a mapping from the chemical element symbol (e.g., 'H' for Hydrogen, 'O' for Oxygen)
 % to its corresponding atomic number (e.g., 1 for Hydrogen, 8 for Oxygen).
 %
 % Usage:

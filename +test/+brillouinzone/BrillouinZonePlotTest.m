@@ -29,7 +29,6 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
             b1 = [1/2, -sqrt(3)/2, 0];
             b2 = [1/2, sqrt(3)/2, 0];
             b3 = [0, 0, 1];
-
             brillouinzone.plotBrillouinZone(b1, b2, b3);
         end
 
@@ -38,6 +37,34 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
             b2 = [0, 1, 0];
             b3 = [0.2, 0.2, 1];
             brillouinzone.plotBrillouinZone(b1, b2, b3);
+        end
+
+        function RectangularLattice2DTest(~)
+            % For 2D Rectangular Lattice.
+            b1 = [2*pi, 0];
+            b2 = [0, 2*pi/2];
+            brillouinzone.plotBrillouinZone(b1, b2);
+        end
+
+        function ObliqueLattice2DTest(~)
+            % For 2D Oblique Lattice.
+            theta = pi/4;
+            b1 = [2*pi, 0];
+            b2 = [2*pi*1.7*cos(theta), 2*pi*1.7*sin(theta)];
+            brillouinzone.plotBrillouinZone(b1, b2);
+        end
+
+        function HexagonalLattice2DTest(~)
+            % For 2D Hexagonal Lattice.
+            b1 = [0.5, sqrt(3)/2];
+            b2 = [1, 0];
+            brillouinzone.plotBrillouinZone(b1, b2);
+        end
+
+        function CustomLattice2DTest(~)
+            b1 = [0.3, sqrt(3)/2];
+            b2 = [1, 0];
+            brillouinzone.plotBrillouinZone(b1, b2);
         end
 
         function Si8PlotWithPathTest(~)
