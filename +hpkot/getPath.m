@@ -84,6 +84,7 @@ kparam_extended = hpkot.internal.extendParameters(kparam);
 
 % Compute k-point coordinates
 points = struct();
+reciprocalLattice = utils.getReciprocalCellRows(prim_lattice);
 point_names = fieldnames(points_def);
 for i = 1:length(point_names)
     pointname = point_names{i};
@@ -92,7 +93,7 @@ for i = 1:length(point_names)
     for j = 1:3
         coords(j) = hpkot.internal.evaluateExpressionSimple(coords_def{j}, kparam_extended);
     end
-    points.(pointname) = coords;
+    points.(pointname) = coords * reciprocalLattice;
 end
 
 % Augment path if necessary
