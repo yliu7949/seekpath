@@ -68,6 +68,7 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
         end
 
         function Si8PlotWithPathTest(~)
+            % https://next-gen.materialsproject.org/materials/mp-149
             cell = [
                 5.4437023729394527    0.0000000000000000    0.0000000000000003
                 0.0000000000000009    5.4437023729394527    0.0000000000000003
@@ -88,12 +89,39 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
 
             result = hpkot.getPath(structure, false);
             reciprocalLattice = utils.getReciprocalCellRows(result.primitive_lattice);
-            b1 = reciprocalLattice(:, 1);
-            b2 = reciprocalLattice(:, 2);
-            b3 = reciprocalLattice(:, 3);
+            b1 = reciprocalLattice(1, :);
+            b2 = reciprocalLattice(2, :);
+            b3 = reciprocalLattice(3, :);
 
             % Call the function to plot
-            brillouinzone.plotBrillouinZoneWithPath(b1, b2, b3, result);
+            brillouinzone.plotBrillouinZoneWithPath(result, b1, b2, b3);
+        end
+
+        function Te2WPlotWithPathTest(~)
+            % https://next-gen.materialsproject.org/materials/mp-1019322
+            cell = [
+                1.7807733239034182   -3.0843898737640294    0.0000000000000000
+                1.7807733239034182    3.0843898737640294    0.0000000000000000
+                0.0000000000000000    0.0000000000000000   14.8472256999999992
+                ];
+            positions = [
+                0.3333333333333333    0.6666666666666666    0.8708151000000000
+                0.6666666666666667    0.3333333333333334    0.1291849000000000
+                0.6666666666666667    0.3333333333333333    0.3708151000000000
+                0.3333333333333333    0.6666666666666667    0.6291849000000000
+                0.3333333333333333    0.6666666666666666    0.2500000000000000
+                0.6666666666666667    0.3333333333333334    0.7500000000000000
+                ];
+            numbers = [52, 52, 52, 52, 74, 74];
+            structure = {cell, positions, numbers};
+
+            result = hpkot.getPath2D(structure);
+            reciprocalLattice = utils.getReciprocalCellRows(cell);
+            b1 = reciprocalLattice(1, :);
+            b2 = reciprocalLattice(2, :);
+
+            % Call the function to plot
+            brillouinzone.plotBrillouinZoneWithPath(result, b1, b2);
         end
     end
 end

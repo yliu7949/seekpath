@@ -12,7 +12,7 @@ function exportFigure(baseName, options)
 %
 % Example:
 % plot(rand(10,1));
-% exportFigure('output/myPlot', 'Formats', ["png", "pdf"], 'Resolution', 600);
+% utils.exportFigure('output/myPlot', 'Formats', ["png", "pdf"], 'Resolution', 600);
 
 arguments
     baseName (1,1) string {mustBeNonempty}

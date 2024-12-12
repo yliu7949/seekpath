@@ -1,5 +1,16 @@
 function generateBandPathData()
-% Generate band path data from the 'seekpath' repository and save it as a .mat file.
+%GENERATEBANDPATHDATA Clone and parse band path data from the seekpath repository.
+%
+% This function retrieves and processes band path data from the 'seekpath' GitHub repository. 
+% Specifically, it:
+%   1. Checks if the 'seekpath' repository is present in a parent directory; if not, it clones the repository.
+%   2. Navigates to the 'band_path_data' directory within 'seekpath', where various subfolders contain 
+%      reference data files (e.g., 'points', 'path', 'k_vector_parameters').
+%   3. Reads and structures these data files into a MATLAB struct, organizing the information by subfolder.
+%   4. Saves the resulting struct to 'BandPathData.mat' in the '+data' directory.
+%
+% The output MAT file serves as a convenient dataset for high-symmetry k-point paths, points, and parameters,
+% which can be used in subsequent workflows (e.g., band structure calculations).
 
 % Get the current script's folder
 currentFolder = fileparts(mfilename('fullpath'));
