@@ -1,5 +1,5 @@
 function [cell, positions, atomicNumbers] = simpleReadPoscar(contents)
-% SIMPLEPOSCARREAD Processes the contents of a VASP POSCAR file
+%SIMPLEREADPOSCAR Processes the contents of a VASP POSCAR file
 %
 % Input:
 %   contents - Cell array where each element is a line from the POSCAR file
