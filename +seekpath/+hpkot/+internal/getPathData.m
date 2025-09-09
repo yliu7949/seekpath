@@ -14,7 +14,9 @@ function [kpointParameterDefinitions, kpointDefinitions, kpointPath] = getPathDa
 %   kpointPath                 - A cell array defining the suggested k-point paths.
 
 % Define the path to the BandPathData.mat file
-bandPathDataFilePath = fullfile('+seekpath', '+data', 'BandPathData.mat');
+currentFolder = fileparts(mfilename('fullpath'));
+seekpathFolder = fileparts(fileparts(currentFolder));
+bandPathDataFilePath = fullfile(seekpathFolder, '+data', 'BandPathData.mat');
 
 % Check if the BandPathData.mat file exists
 if ~isfile(bandPathDataFilePath)
