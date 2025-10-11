@@ -249,7 +249,7 @@ classdef PathCreationTest < matlab.unittest.TestCase
                     p1 = result.path{i, 1};
                     p2 = result.path{i, 2};
                     fprintf('   %s -- %s: %s -- %s\n', p1, p2, ...
-                        mat2str(result.point_coords.(p1), 3), mat2str(result.point_coords.(p2), 3));
+                        mat2str(result.point_coords(p1), 3), mat2str(result.point_coords(p2), 3));
                 end
             end
         end
