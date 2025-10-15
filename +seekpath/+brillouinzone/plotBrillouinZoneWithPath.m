@@ -88,8 +88,8 @@ plottedPoints = struct(); % To keep track of points already plotted
 for i = 1:size(result.path, 1)
     p1 = result.path{i, 1};
     p2 = result.path{i, 2};
-    coord1 = result.point_coords.(p1);
-    coord2 = result.point_coords.(p2);
+    coord1 = result.point_coords(p1);
+    coord2 = result.point_coords(p2);
     % Plot a line between coord1 and coord2
     line([coord1(1), coord2(1)], [coord1(2), coord2(2)], 'Color', 'r', 'LineWidth', 2);
 
@@ -175,8 +175,8 @@ plottedPoints = struct(); % To keep track of points already plotted
 for i = 1:size(result.path, 1)
     p1 = result.path{i, 1};
     p2 = result.path{i, 2};
-    coord1 = result.point_coords.(p1);
-    coord2 = result.point_coords.(p2);
+    coord1 = result.point_coords(p1);
+    coord2 = result.point_coords(p2);
     % Plot a line between coord1 and coord2
     line([coord1(1), coord2(1)], [coord1(2), coord2(2)], [coord1(3), coord2(3)], ...
         'Color', 'r', 'LineWidth', 2);
