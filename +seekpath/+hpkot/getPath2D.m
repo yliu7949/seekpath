@@ -146,12 +146,12 @@ for i = 1:length(labels)-1
     path{i, 2} = labels{i+1};
 end
 
-% Store the special k-points in a structured form
-points = struct();
-for i = 1:length(labels)
-    label = labels{i};
-    if ~isfield(points, label)
-        points.(label) = point_coords(i, :) * reciprocalLattice;
+% Store special k-points in a containers.Map
+points = containers.Map('KeyType', 'char', 'ValueType', 'any');
+for i = 1:numel(labels)
+    key = labels{i};
+    if ~isKey(points, key)
+        points(key) = point_coords(i, :) * reciprocalLattice;
     end
 end
 

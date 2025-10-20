@@ -81,40 +81,53 @@ quiver3(0, 0, 0, b2Scaled(1), b2Scaled(2), 0, 'k', 'LineWidth', 2, 'MaxHeadSize'
 text(b1Scaled(1), b1Scaled(2), 0, 'b_1', 'FontSize', 12, 'FontWeight', 'bold');
 text(b2Scaled(1), b2Scaled(2), 0, 'b_2', 'FontSize', 12, 'FontWeight', 'bold');
 
-% Plot the path line segments between points using red color
-% Also plot the points themselves with larger size and label them
-plottedPoints = struct(); % To keep track of points already plotted
+% Plot the path line segments between points using red color.
+% Also, plot the points themselves with a larger size and label them.
+
+% Initialize a Map to keep track of points that have already been plotted.
+% Keys are character strings (point names), and Values are logical (true/false).
+plottedPoints = containers.Map('KeyType', 'char', 'ValueType', 'logical');
 
 for i = 1:size(result.path, 1)
+    % Get point names and their coordinates.
     p1 = result.path{i, 1};
     p2 = result.path{i, 2};
     coord1 = result.point_coords(p1);
     coord2 = result.point_coords(p2);
-    % Plot a line between coord1 and coord2
+
+    % Plot a line segment between the two points.
     line([coord1(1), coord2(1)], [coord1(2), coord2(2)], 'Color', 'r', 'LineWidth', 2);
 
-    % Plot the points if not already plotted
-    if ~isfield(plottedPoints, p1)
+    % Plot and label the first point (p1) if it hasn't been plotted yet.
+    if ~isKey(plottedPoints, p1)
         scatter(coord1(1), coord1(2), 70, 'r', 'filled');
-        % Replace 'Gamma' with Greek letter gamma
+
+        % Prepare the label text, rendering 'Gamma' as the Greek letter.
         if strcmpi(p1, 'Gamma')
             label_p1 = '\Gamma';
         else
             label_p1 = p1;
         end
         text(coord1(1), coord1(2), ['  ', label_p1], 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k', 'Interpreter', 'tex');
-        plottedPoints.(p1) = true;
+
+        % Mark this point as plotted by adding its key to the map.
+        plottedPoints(p1) = true;
     end
-    if ~isfield(plottedPoints, p2)
+
+    % Plot and label the second point (p2) if it hasn't been plotted yet.
+    if ~isKey(plottedPoints, p2)
         scatter(coord2(1), coord2(2), 70, 'r', 'filled');
-        % Replace 'Gamma' with Greek letter gamma
+
+        % Prepare the label text, rendering 'Gamma' as the Greek letter.
         if strcmpi(p2, 'Gamma')
             label_p2 = '\Gamma';
         else
             label_p2 = p2;
         end
         text(coord2(1), coord2(2), ['  ', label_p2], 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k', 'Interpreter', 'tex');
-        plottedPoints.(p2) = true;
+
+        % Mark this point as plotted by adding its key to the map.
+        plottedPoints(p2) = true;
     end
 end
 
@@ -168,41 +181,55 @@ text(b1Scaled(1), b1Scaled(2), b1Scaled(3), 'b_1', 'FontSize', 12, 'FontWeight',
 text(b2Scaled(1), b2Scaled(2), b2Scaled(3), 'b_2', 'FontSize', 12, 'FontWeight', 'bold');
 text(b3Scaled(1), b3Scaled(2), b3Scaled(3), 'b_3', 'FontSize', 12, 'FontWeight', 'bold');
 
-% Plot the path line segments between points using red color
-% Also plot the points themselves with larger size and label them
-plottedPoints = struct(); % To keep track of points already plotted
+% Plot the 3D path line segments between points using red color.
+% Also, plot the points themselves with a larger size and label them.
+
+% Initialize a Map to keep track of points that have already been plotted.
+plottedPoints = containers.Map('KeyType', 'char', 'ValueType', 'logical');
 
 for i = 1:size(result.path, 1)
+    % Get point names and their 3D coordinates.
     p1 = result.path{i, 1};
     p2 = result.path{i, 2};
     coord1 = result.point_coords(p1);
     coord2 = result.point_coords(p2);
-    % Plot a line between coord1 and coord2
-    line([coord1(1), coord2(1)], [coord1(2), coord2(2)], [coord1(3), coord2(3)], ...
-        'Color', 'r', 'LineWidth', 2);
 
-    % Plot the points if not already plotted
-    if ~isfield(plottedPoints, p1)
+    % Plot a 3D line segment between the two points.
+    line([coord1(1), coord2(1)], [coord1(2), coord2(2)], [coord1(3), coord2(3)], ...
+         'Color', 'r', 'LineWidth', 2);
+
+    % Plot and label the first point (p1) if it hasn't been plotted yet.
+    if ~isKey(plottedPoints, p1)
         scatter3(coord1(1), coord1(2), coord1(3), 70, 'r', 'filled');
-        % Replace 'Gamma' with Greek letter gamma
+
+        % Prepare the label text, rendering 'Gamma' as the Greek letter.
         if strcmpi(p1, 'Gamma')
             label_p1 = '\Gamma';
         else
             label_p1 = p1;
         end
-        text(coord1(1), coord1(2), coord1(3), ['  ', label_p1], 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k', 'Interpreter', 'tex');
-        plottedPoints.(p1) = true;
+        text(coord1(1), coord1(2), coord1(3), ['  ', label_p1], ...
+             'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k', 'Interpreter', 'tex');
+
+        % Mark this point as plotted by adding its key to the map.
+        plottedPoints(p1) = true;
     end
-    if ~isfield(plottedPoints, p2)
+
+    % Plot and label the second point (p2) if it hasn't been plotted yet.
+    if ~isKey(plottedPoints, p2)
         scatter3(coord2(1), coord2(2), coord2(3), 70, 'r', 'filled');
-        % Replace 'Gamma' with Greek letter gamma
+
+        % Prepare the label text, rendering 'Gamma' as the Greek letter.
         if strcmpi(p2, 'Gamma')
             label_p2 = '\Gamma';
         else
             label_p2 = p2;
         end
-        text(coord2(1), coord2(2), coord2(3), ['  ', label_p2], 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k', 'Interpreter', 'tex');
-        plottedPoints.(p2) = true;
+        text(coord2(1), coord2(2), coord2(3), ['  ', label_p2], ...
+             'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k', 'Interpreter', 'tex');
+
+        % Mark this point as plotted by adding its key to the map.
+        plottedPoints(p2) = true;
     end
 end
 

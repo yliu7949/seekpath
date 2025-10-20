@@ -83,17 +83,17 @@ end
 kparam_extended = seekpath.hpkot.internal.extendParameters(kparam);
 
 % Compute k-point coordinates
-points = struct();
+points = containers.Map('KeyType', 'char', 'ValueType', 'any');
 reciprocalLattice = seekpath.utils.getReciprocalCellRows(prim_lattice);
 point_names = fieldnames(points_def);
 for i = 1:length(point_names)
     pointname = point_names{i};
     coords_def = points_def.(pointname);
-    coords = zeros(1,3);
+    coords = zeros(1, 3);
     for j = 1:3
         coords(j) = seekpath.hpkot.internal.evaluateExpressionSimple(coords_def{j}, kparam_extended);
     end
-    points.(pointname) = coords * reciprocalLattice;
+    points(pointname) = coords * reciprocalLattice;
 end
 
 % Augment path if necessary
