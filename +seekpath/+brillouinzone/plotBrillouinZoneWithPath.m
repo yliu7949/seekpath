@@ -191,8 +191,8 @@ for i = 1:size(result.path, 1)
     % Get point names and their 3D coordinates.
     p1 = result.path{i, 1};
     p2 = result.path{i, 2};
-    coord1 = result.point_coords(p1);
-    coord2 = result.point_coords(p2);
+    coord1 = result.point_coords(p1) * result.reciprocal_primitive_lattice;
+    coord2 = result.point_coords(p2) * result.reciprocal_primitive_lattice;
 
     % Plot a 3D line segment between the two points.
     line([coord1(1), coord2(1)], [coord1(2), coord2(2)], [coord1(3), coord2(3)], ...

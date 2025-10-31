@@ -88,7 +88,7 @@ classdef BrillouinZonePlotTest < matlab.unittest.TestCase
             structure = {cell, positions, numbers};
 
             result = seekpath.hpkot.getPath(structure, false);
-            reciprocalLattice = seekpath.utils.getReciprocalCellRows(result.primitive_lattice);
+            reciprocalLattice = result.reciprocal_primitive_lattice;
             b1 = reciprocalLattice(1, :);
             b2 = reciprocalLattice(2, :);
             b3 = reciprocalLattice(3, :);

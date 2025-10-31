@@ -2,7 +2,7 @@ classdef PathCreationTest < matlab.unittest.TestCase
     % PATHCREATIONTEST A unittest for testing the band path creation.
 
     properties (Constant)
-        verbose_tests = false;
+        verbose_tests = true;
     end
 
     methods (Test)
